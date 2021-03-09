@@ -16,8 +16,7 @@ class MovieManagerGetMovieTest {
     private Movie sixth = new Movie(6, "Trolls. World tour" , "cartoon");
     private Movie seventh = new Movie(7, "Number one", "comedy");
     private Movie eighth = new Movie(8, "Raya and the Last Dragon","cartoon");
-
-
+    private Movie eight;
 
 
     @BeforeEach
@@ -29,6 +28,7 @@ class MovieManagerGetMovieTest {
         manager.addMovie(fifth);
         manager.addMovie(sixth);
         manager.addMovie(seventh);
+        manager.addMovie(eight);
 
     }
 
@@ -38,13 +38,13 @@ class MovieManagerGetMovieTest {
     @Test
     public void shouldGetFifth() {
         MovieManager manager = new MovieManager(5);
+        manager.addMovie(eight);
+        manager.addMovie(seventh);
+        manager.addMovie(sixth);
         manager.addMovie(fifth);
         manager.addMovie(fourth);
-        manager.addMovie(third);
-        manager.addMovie(second);
-        manager.addMovie(first);
 
-        Movie[] expected = new Movie[] {first,second,third,fourth,fifth};
+        Movie[] expected = new Movie[] {fourth,fifth,sixth,seventh,eight};
         Movie[] actual = manager.getAll();
 
         assertArrayEquals(expected, actual);
@@ -67,6 +67,14 @@ class MovieManagerGetMovieTest {
 
 
     }
+    @Test
+    void shouldAddNoFilm() {
+        MovieManager manager = new MovieManager(0);
+        Movie[] expected = new Movie[0];
+        Movie[] actual = manager.getItems();
+        assertArrayEquals(expected, actual);
+    }
+
 
 
 

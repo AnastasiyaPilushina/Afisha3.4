@@ -13,6 +13,13 @@ public class MovieManager {
 
     private int afishalenght = 7;
 
+    public Movie[] getItems() {
+        return items;
+    }
+
+
+
+
     public void addMovie(Movie item) {
         // создаём новый массив размером на единицу больше
         int length = items.length + 1;
@@ -28,6 +35,8 @@ public class MovieManager {
         tmp[lastIndex] = item;
         items = tmp;
     }
+
+
 
     public Movie[] getAll() {
         Movie[] result = new Movie[items.length];
